@@ -1,0 +1,4 @@
+
+Source code locations for the following tools:
+ RokuPost:           SVN:  https://source.cypressconsulting.net/svn/CypressTech/Roku
+ FinalizeRokuBuild:  SVN:  https://source.cypressconsulting.net/svn/CypressTech/Roku

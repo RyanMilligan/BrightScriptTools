@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<component name="SampleScene" extends="Scene">
+  <Label text="Welcome to components!" translation="[200,200]" />
+</component>

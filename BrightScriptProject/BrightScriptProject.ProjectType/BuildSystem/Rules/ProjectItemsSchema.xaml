@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Copyright, Microsoft Corporation, All rights reserved.-->
+<ProjectSchemaDefinitions
+    xmlns="http://schemas.microsoft.com/build/2009/properties">
+
+    <ContentType
+        Name="BrightScript"
+        DisplayName="Roku Script"
+        ItemType="Script">
+    </ContentType>
+
+    <ContentType 
+        Name="Component"
+        DisplayName="Roku Component"
+        ItemType="Component" />
+    <ContentType Name="Translation"
+                 DisplayName="Roku translations file"
+                 ItemType="Translation" />
+
+    <ContentType
+        Name="General"
+        DisplayName="Roku manifest"
+        ItemType="RokuManifest" />
+
+    <ItemType Name="Script" DisplayName="Roku Script"/>
+    <ItemType Name="Component" DisplayName="XML file" />
+    <ItemType Name="RokuManifest" DisplayName="Roku manifest" />
+    <ItemType Name="Translation" DisplayName="Roku translation file" />
+
+    <FileExtension Name=".brs" ContentType="BrightScript"/>
+    <FileExtension Name=".xml" ContentType="Component" />
+    <FileExtension Name=".manifest" ContentType="RokuManifest" />
+</ProjectSchemaDefinitions>
+
