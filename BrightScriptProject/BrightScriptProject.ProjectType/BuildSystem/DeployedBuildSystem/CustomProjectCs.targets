@@ -9,13 +9,15 @@
     <PropertyPageSchema Include="$(MSBuildThisFileDirectory)Rules\brightscript.xaml;
                         $(MSBuildThisFileDirectory)Rules\component.xaml;
                         $(MSBuildThisFileDirectory)Rules\rokumanifest.xaml;
-                        $(MSBuildThisFileDirectory)Rules\translation.xaml;">
+                        $(MSBuildThisFileDirectory)Rules\translation.xaml;
+                        $(MSBuildThisFileDirectory)Rules\content.xaml;">
       <Context>File</Context>
     </PropertyPageSchema>
     <PropertyPageSchema Include="$(MSBuildThisFileDirectory)Rules\brightscript.browseobject.xaml;
                         $(MSBuildThisFileDirectory)Rules\component.browseobject.xaml;
                         $(MSBuildThisFileDirectory)Rules\rokumanifest.browseobject.xaml;
-                        $(MSBuildThisFileDirectory)Rules\translation.browseobject.xaml;">
+                        $(MSBuildThisFileDirectory)Rules\translation.browseobject.xaml;
+                        $(MSBuildThisFileDirectory)Rules\content.browseobject.xaml;">
       <Context>BrowseObject</Context>
     </PropertyPageSchema>
   </ItemGroup>

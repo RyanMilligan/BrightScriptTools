@@ -21,13 +21,21 @@
         Name="General"
         DisplayName="Roku manifest"
         ItemType="RokuManifest" />
+	<ContentType
+		Name="Content"
+		DisplayName="Content"
+		ItemType="Content" />
 
-    <ItemType Name="Script" DisplayName="Roku Script"/>
+	<ItemType Name="Script" DisplayName="Roku Script"/>
     <ItemType Name="Component" DisplayName="XML file" />
     <ItemType Name="RokuManifest" DisplayName="Roku manifest" />
     <ItemType Name="Translation" DisplayName="Roku translation file" />
+	<ItemType Name="Content" DisplayName="Content" />
 
-    <FileExtension Name=".brs" ContentType="BrightScript"/>
+	<FileExtension Name=".ttf" ContentType="Content" />
+	<FileExtension Name=".png" ContentType="Content" />
+	<FileExtension Name=".jpg" ContentType="Content" />
+	<FileExtension Name=".brs" ContentType="BrightScript"/>
     <FileExtension Name=".xml" ContentType="Component" />
     <FileExtension Name=".manifest" ContentType="RokuManifest" />
 </ProjectSchemaDefinitions>

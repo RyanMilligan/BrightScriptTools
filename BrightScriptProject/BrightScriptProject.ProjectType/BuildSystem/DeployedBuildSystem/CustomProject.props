@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Run" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TempLocation>$(OutputPath)\tempfiles</TempLocation>
     <OutputZipName>$(Name)_$(Configuration).zip</OutputZipName>
     <OutputZip>$(TempLocation)\$(OutputZipName)</OutputZip>
+    <RokuIp Condition="$(RokuIp) == ''">192.168.21.236</RokuIp>
   </PropertyGroup>
-  <Target Name="Build" DependsOnTargets="Clean;Stage;Zip">
+  <Target Name="Build" DependsOnTargets="Zip">
   </Target>
   <Target Name="Clean">
     <RemoveDir Directories="$(TempLocation)" />
   </Target>
-  <Target Name="Stage" Inputs="@(Script);@(Component)" Outputs="%(Script->'$(TempLocation)\%(Identity)');%(RokuManifest->'$(TempLocation)\%(Identity)');%(Component->'$(TempLocation)\%(Identity)')">
+  <Target Name="Stage" DependsOnTargets="Clean" Inputs="@(Script);@(Component)" Outputs="%(Script->'$(TempLocation)\%(Identity)');%(RokuManifest->'$(TempLocation)\%(Identity)');%(Component->'$(TempLocation)\%(Identity)')">
     <Copy SourceFiles="@(Script)" DestinationFolder="$(TempLocation)\%(RelativeDir)">
       <Output TaskParameter="CopiedFiles" ItemName="TempFiles" />
     </Copy>
@@ -21,12 +22,15 @@
       <Output TaskParameter="CopiedFiles" ItemName="TempFiles" />
       <Output TaskParameter="CopiedFiles" ItemName="CopiedComponents" />
     </Copy>
+    <Copy SourceFiles="@(Content)" DestinationFolder="$(TempLocation)\%(RelativeDir)">
+      <Output TaskParameter="CopiedFiles" ItemName="TempFiles" />
+    </Copy>
   </Target>
-  <Target Name="Zip" Inputs="@(TempFiles)" Outputs="$(OutputZip)" DependsOnTargets="Stage">
+  <Target Name="Zip" DependsOnTargets="Stage" Inputs="@(TempFiles)" Outputs="$(OutputZip)">
     <Message Text="@(Script)" />
     <Exec WorkingDirectory="$(TempLocation)" Command="$(ProjectSystemBase)\Tools\zip.exe -r a $(OutputZipName) @(TempLocation)" />
   </Target>
   <Target Name="Run" DependsOnTargets="Zip">
-
+    <Exec WorkingDirectory="$(TempLocation)" Command="$(ProjectSystemBase)\Tools\RokuPost.exe /Z $(OutputZipName) /R $(RokuIp)" />
   </Target>
 </Project>
